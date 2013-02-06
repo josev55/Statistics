@@ -115,6 +115,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Static\blackbg.PNG" />
+    <Content Include="Static\bodyBg.png" />
+    <Content Include="Static\dark-hive\images\animated-overlay.gif" />
+    <Content Include="Static\dark-hive\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_highlight-hard_20_0972a5_1x100.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_highlight-soft_33_003147_1x100.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_highlight-soft_35_222222_1x100.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_highlight-soft_44_444444_1x100.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Static\dark-hive\images\ui-bg_loop_25_000000_21x21.png" />
+    <Content Include="Static\dark-hive\images\ui-icons_222222_256x240.png" />
+    <Content Include="Static\dark-hive\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Static\dark-hive\images\ui-icons_a83300_256x240.png" />
+    <Content Include="Static\dark-hive\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="Static\dark-hive\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Static\dark-hive\jquery-ui-1.10.0.custom.css" />
+    <Content Include="Static\dark-hive\jquery-ui-1.10.0.custom.min.css" />
+    <Content Include="Static\headerNew.png" />
+    <Content Include="Static\js\jquery-1.9.0.js" />
+    <Content Include="Static\js\jquery-ui-1.10.0.custom.js" />
+    <Content Include="Static\js\jquery-ui-1.10.0.custom.min.js" />
+    <Content Include="Static\styles.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -132,7 +156,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\Stats\Stats.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Stats\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
