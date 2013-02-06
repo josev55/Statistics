@@ -39,10 +39,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -102,9 +117,303 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mvc3">
+      <HintPath>..\packages\Unity.Mvc3.1.2\lib\net40\Unity.Mvc3.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\StatsController.cs" />
+    <Compile Include="DAL\IUsuarioService.cs" />
+    <Compile Include="DAL\mg_senxxxual.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_comcel_renew_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_getClaroStatsMonth_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_get_claro_stats_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_get_comcel_sub_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_perums_getStats_month_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_perums_getStats_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_renew_claro_dr_amigos_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_comcel2_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_comcel_month_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_comcel_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_eng_month_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_eng_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_pb_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_peekaboo_rpt_day_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_peekaboo_rpt_month_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_peekaboo_rpt_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_peekaboo_rpt_year_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_sia_month_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_rpt_sia_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_sia_rpt_detail_dst_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_sia_rpt_detail_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_sia_rpt_dst_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_sia_rpt_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_sia_status_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\StatsDbContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatsDbContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\StatsDbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\StatsDbContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatsDbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sysdiagrams.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_amdocs_dev2.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_amdocs_device.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_amdocs_device2.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_ch.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_charge_peru.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_charge_peru_claro.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_comcel_charge.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_comcel_sub.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_comcel_sub_source.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_com_nobill.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_content_provider.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_cp_callback.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_eng_charge.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_eng_mo.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_eng_mt.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_eng_persistant_sub.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_eng_subscription.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_eng_unsub.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_eng_unsub_notification.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_fb_user.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_gm_catalog.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_gm_xendex_amdocs.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_hub_sync.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_mlk_sms.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_ml_sms_prices.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_mt_extern.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_operator.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_perums_callback.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_peru_ml_charge.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_peru_ml_subcription.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_pkaboo_bill.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_pkaboo_hit.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_pkaboo_start.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_purebros_bill.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_purebros_mo.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_purebros_mt.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_service.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TBL_SFM.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_billing.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_block.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_block_2.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_distinct_transaction.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_msenxxxual.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_msenxxxualn.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_msenxxxualp.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_msenxxxual_p2.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_msenxxxual_simple.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_msenxxxual_simple2.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_msenxxxual_simples.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sia_transaction.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sms_mo.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sms_mo_deliver.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sms_mt.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sms_mt_log.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sms_sc.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_sms_sc_url.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_smt_sub.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_spr_billing.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_spr_buyChannel.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_spr_insMt.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_spr_mo.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_spr_mtStatus.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_spr_operator.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_user.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\tbl_xendex_ua.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\UsuarioService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,6 +448,7 @@
     <Content Include="Static\js\jquery-ui-1.10.0.custom.js" />
     <Content Include="Static\js\jquery-ui-1.10.0.custom.min.js" />
     <Content Include="Static\styles.css" />
+    <Content Include="Unity.Mvc3.README.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -160,6 +470,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Stats\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DAL\StatsDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StatsDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\StatsDbContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StatsDbContext.edmx</DependentUpon>
+      <LastGenOutput>StatsDbContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\StatsDbContext.edmx.diagram">
+      <DependentUpon>StatsDbContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="DAL\StatsDbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StatsDbContext.edmx</DependentUpon>
+      <LastGenOutput>StatsDbContext.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
