@@ -87,12 +87,6 @@ namespace EndeavorlinkStats.DAL
         public DbSet<tbl_sms_sc> tbl_sms_sc { get; set; }
         public DbSet<tbl_sms_sc_url> tbl_sms_sc_url { get; set; }
         public DbSet<tbl_smt_sub> tbl_smt_sub { get; set; }
-        public DbSet<tbl_spr_billing> tbl_spr_billing { get; set; }
-        public DbSet<tbl_spr_buyChannel> tbl_spr_buyChannel { get; set; }
-        public DbSet<tbl_spr_insMt> tbl_spr_insMt { get; set; }
-        public DbSet<tbl_spr_mo> tbl_spr_mo { get; set; }
-        public DbSet<tbl_spr_mtStatus> tbl_spr_mtStatus { get; set; }
-        public DbSet<tbl_spr_operator> tbl_spr_operator { get; set; }
         public DbSet<tbl_user> tbl_user { get; set; }
         public DbSet<tbl_xendex_ua> tbl_xendex_ua { get; set; }
     

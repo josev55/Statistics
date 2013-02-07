@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="DAL\IUsuarioService.cs" />
     <Compile Include="DAL\mg_senxxxual.cs">
@@ -389,24 +390,6 @@
     <Compile Include="DAL\tbl_smt_sub.cs">
       <DependentUpon>StatsDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\tbl_spr_billing.cs">
-      <DependentUpon>StatsDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\tbl_spr_buyChannel.cs">
-      <DependentUpon>StatsDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\tbl_spr_insMt.cs">
-      <DependentUpon>StatsDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\tbl_spr_mo.cs">
-      <DependentUpon>StatsDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\tbl_spr_mtStatus.cs">
-      <DependentUpon>StatsDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\tbl_spr_operator.cs">
-      <DependentUpon>StatsDbContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\tbl_user.cs">
       <DependentUpon>StatsDbContext.tt</DependentUpon>
     </Compile>
@@ -424,6 +407,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Static\ajax-loader.gif" />
     <Content Include="Static\blackbg.PNG" />
     <Content Include="Static\bodyBg.png" />
     <Content Include="Static\dark-hive\images\animated-overlay.gif" />
@@ -466,10 +450,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Stats\Stats.cshtml" />
+    <Content Include="Views\Stats\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Stats\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

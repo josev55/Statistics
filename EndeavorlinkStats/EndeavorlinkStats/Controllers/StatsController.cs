@@ -27,21 +27,5 @@ namespace EndeavorlinkStats.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public String logIn(String user, String pass)
-        {
-            var usuario = _usuarioService.getUser(user);
-
-            if (usuario.Equals(pass))
-            {
-                return JsonConvert.SerializeObject(new { Result = "OK", ID = usuario.id_user });
-            }
-            else
-            {
-                return JsonConvert.SerializeObject(new { Result = "FAILED", ID = -1 });
-            }
-        }
-
     }
 }

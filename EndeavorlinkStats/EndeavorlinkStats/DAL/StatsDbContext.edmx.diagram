@@ -64,12 +64,6 @@
         <EntityTypeShape EntityType="smartgModel.tbl_sms_sc" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="smartgModel.tbl_sms_sc_url" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="smartgModel.tbl_smt_sub" Width="1.5" PointX="10.75" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="smartgModel.tbl_spr_billing" Width="1.5" PointX="12.75" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="smartgModel.tbl_spr_buyChannel" Width="1.5" PointX="23.75" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="smartgModel.tbl_spr_insMt" Width="1.5" PointX="11" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="smartgModel.tbl_spr_mo" Width="1.5" PointX="8" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="smartgModel.tbl_spr_mtStatus" Width="1.5" PointX="8.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="smartgModel.tbl_spr_operator" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="smartgModel.tbl_user" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="smartgModel.tbl_xendex_ua" Width="1.5" PointX="23.75" PointY="19.125" IsExpanded="true" />
         <AssociationConnector Association="smartgModel.FK__tbl_charg__id_us__3A179ED3" ManuallyRouted="false" />
@@ -85,8 +79,6 @@
         <AssociationConnector Association="smartgModel.FK_tbl_sms_mt_tbl_sc" ManuallyRouted="false" />
         <AssociationConnector Association="smartgModel.FK_tbl_sms_mt_tbl_user" ManuallyRouted="false" />
         <AssociationConnector Association="smartgModel.FK_tbl_sms_sc_url_tbl_user" ManuallyRouted="false" />
-        <AssociationConnector Association="smartgModel.FK__tbl_spr_i__id_mt__4924D839" ManuallyRouted="false" />
-        <AssociationConnector Association="smartgModel.FK__tbl_spr_m__idOpe__3429BB53" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="smartgModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="smartgModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="smartgModelStoreContainer">
           <EntitySet Name="mg_senxxxual" EntityType="smartgModel.Store.mg_senxxxual" store:Type="Tables" store:Schema="dbo" store:Name="mg_senxxxual">
             <DefiningQuery>SELECT 
@@ -449,12 +449,6 @@
       [tbl_smt_sub].[sid] AS [sid]
       FROM [dbo].[tbl_smt_sub] AS [tbl_smt_sub]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tbl_spr_billing" EntityType="smartgModel.Store.tbl_spr_billing" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbl_spr_buyChannel" EntityType="smartgModel.Store.tbl_spr_buyChannel" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbl_spr_insMt" EntityType="smartgModel.Store.tbl_spr_insMt" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbl_spr_mo" EntityType="smartgModel.Store.tbl_spr_mo" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbl_spr_mtStatus" EntityType="smartgModel.Store.tbl_spr_mtStatus" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbl_spr_operator" EntityType="smartgModel.Store.tbl_spr_operator" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbl_user" EntityType="smartgModel.Store.tbl_user" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbl_xendex_ua" EntityType="smartgModel.Store.tbl_xendex_ua" store:Type="Tables" store:Schema="dbo" store:Name="tbl_xendex_ua">
             <DefiningQuery>SELECT 
@@ -472,14 +466,6 @@
           <AssociationSet Name="FK__tbl_cp_ca__id_cp__477199F1" Association="smartgModel.Store.FK__tbl_cp_ca__id_cp__477199F1">
             <End Role="tbl_content_provider" EntitySet="tbl_content_provider" />
             <End Role="tbl_cp_callback" EntitySet="tbl_cp_callback" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_spr_i__id_mt__4924D839" Association="smartgModel.Store.FK__tbl_spr_i__id_mt__4924D839">
-            <End Role="tbl_spr_mtStatus" EntitySet="tbl_spr_mtStatus" />
-            <End Role="tbl_spr_insMt" EntitySet="tbl_spr_insMt" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_spr_m__idOpe__3429BB53" Association="smartgModel.Store.FK__tbl_spr_m__idOpe__3429BB53">
-            <End Role="tbl_spr_operator" EntitySet="tbl_spr_operator" />
-            <End Role="tbl_spr_mo" EntitySet="tbl_spr_mo" />
           </AssociationSet>
           <AssociationSet Name="fk_id_transaction" Association="smartgModel.Store.fk_id_transaction">
             <End Role="tbl_sia_transaction" EntitySet="tbl_sia_transaction" />
@@ -1522,72 +1508,6 @@
           <Property Name="url" Type="varchar" MaxLength="150" />
           <Property Name="sid" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tbl_spr_billing">
-          <Key>
-            <PropertyRef Name="id_billing" />
-          </Key>
-          <Property Name="id_billing" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="url" Type="varchar" MaxLength="300" />
-          <Property Name="port" Type="varchar" MaxLength="10" />
-          <Property Name="tarif_class" Type="varchar" MaxLength="30" />
-          <Property Name="content_type" Type="varchar" MaxLength="30" />
-          <Property Name="app_id" Type="varchar" MaxLength="200" />
-          <Property Name="typeb" Type="varchar" MaxLength="50" />
-          <Property Name="tstamp" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_spr_buyChannel">
-          <Key>
-            <PropertyRef Name="id_channel" />
-          </Key>
-          <Property Name="id_channel" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="buy_channel" Type="varchar" MaxLength="10" />
-          <Property Name="descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="tstamp" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_spr_insMt">
-          <Key>
-            <PropertyRef Name="id_mt" />
-          </Key>
-          <Property Name="id_mt" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="userp" Type="varchar" MaxLength="100" />
-          <Property Name="pwd" Type="varchar" MaxLength="100" />
-          <Property Name="appdid" Type="varchar" MaxLength="100" />
-          <Property Name="enc" Type="varchar" MaxLength="3" />
-          <Property Name="id_mtStatus" Type="tinyint" />
-          <Property Name="tstamp" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_spr_mo">
-          <Key>
-            <PropertyRef Name="id_mo" />
-          </Key>
-          <Property Name="id_mo" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="phone" Type="varchar" MaxLength="15" />
-          <Property Name="shortNum" Type="int" />
-          <Property Name="msgText" Type="varchar" MaxLength="200" />
-          <Property Name="msgId" Type="decimal" Precision="15" />
-          <Property Name="userp" Type="varchar" MaxLength="100" />
-          <Property Name="pwd" Type="varchar" MaxLength="100" />
-          <Property Name="idOperator" Type="int" />
-          <Property Name="enc" Type="varchar" MaxLength="3" />
-          <Property Name="refMsgId" Type="varchar" MaxLength="50" />
-          <Property Name="tstamp" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_spr_mtStatus">
-          <Key>
-            <PropertyRef Name="id_mtStatus" />
-          </Key>
-          <Property Name="id_mtStatus" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="varchar" MaxLength="20" />
-          <Property Name="tstamp" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_spr_operator">
-          <Key>
-            <PropertyRef Name="idOperator" />
-          </Key>
-          <Property Name="idOperator" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="varchar" MaxLength="30" />
-          <Property Name="tstamp" Type="datetime" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbl_user">
           <Key>
             <PropertyRef Name="id_user" />
@@ -1634,30 +1554,6 @@
             </Principal>
             <Dependent Role="tbl_cp_callback">
               <PropertyRef Name="id_cp" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_spr_i__id_mt__4924D839">
-          <End Role="tbl_spr_mtStatus" Type="smartgModel.Store.tbl_spr_mtStatus" Multiplicity="0..1" />
-          <End Role="tbl_spr_insMt" Type="smartgModel.Store.tbl_spr_insMt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_spr_mtStatus">
-              <PropertyRef Name="id_mtStatus" />
-            </Principal>
-            <Dependent Role="tbl_spr_insMt">
-              <PropertyRef Name="id_mtStatus" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_spr_m__idOpe__3429BB53">
-          <End Role="tbl_spr_operator" Type="smartgModel.Store.tbl_spr_operator" Multiplicity="0..1" />
-          <End Role="tbl_spr_mo" Type="smartgModel.Store.tbl_spr_mo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_spr_operator">
-              <PropertyRef Name="idOperator" />
-            </Principal>
-            <Dependent Role="tbl_spr_mo">
-              <PropertyRef Name="idOperator" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2084,8 +1980,7 @@
           <Parameter Name="id" Type="numeric" Mode="InOut" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="smartgModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2149,12 +2044,6 @@
           <EntitySet Name="tbl_sms_sc" EntityType="smartgModel.tbl_sms_sc" />
           <EntitySet Name="tbl_sms_sc_url" EntityType="smartgModel.tbl_sms_sc_url" />
           <EntitySet Name="tbl_smt_sub" EntityType="smartgModel.tbl_smt_sub" />
-          <EntitySet Name="tbl_spr_billing" EntityType="smartgModel.tbl_spr_billing" />
-          <EntitySet Name="tbl_spr_buyChannel" EntityType="smartgModel.tbl_spr_buyChannel" />
-          <EntitySet Name="tbl_spr_insMt" EntityType="smartgModel.tbl_spr_insMt" />
-          <EntitySet Name="tbl_spr_mo" EntityType="smartgModel.tbl_spr_mo" />
-          <EntitySet Name="tbl_spr_mtStatus" EntityType="smartgModel.tbl_spr_mtStatus" />
-          <EntitySet Name="tbl_spr_operator" EntityType="smartgModel.tbl_spr_operator" />
           <EntitySet Name="tbl_user" EntityType="smartgModel.tbl_user" />
           <EntitySet Name="tbl_xendex_ua" EntityType="smartgModel.tbl_xendex_ua" />
           <AssociationSet Name="FK__tbl_charg__id_us__3A179ED3" Association="smartgModel.FK__tbl_charg__id_us__3A179ED3">
@@ -2209,14 +2098,6 @@
             <End Role="tbl_user" EntitySet="tbl_user" />
             <End Role="tbl_sms_sc_url" EntitySet="tbl_sms_sc_url" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_spr_i__id_mt__4924D839" Association="smartgModel.FK__tbl_spr_i__id_mt__4924D839">
-            <End Role="tbl_spr_mtStatus" EntitySet="tbl_spr_mtStatus" />
-            <End Role="tbl_spr_insMt" EntitySet="tbl_spr_insMt" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_spr_m__idOpe__3429BB53" Association="smartgModel.FK__tbl_spr_m__idOpe__3429BB53">
-            <End Role="tbl_spr_operator" EntitySet="tbl_spr_operator" />
-            <End Role="tbl_spr_mo" EntitySet="tbl_spr_mo" />
-          </AssociationSet>
           <FunctionImport Name="sp_addextendedproc">
             <Parameter Name="functname" Mode="In" Type="String" />
             <Parameter Name="dllname" Mode="In" Type="String" />
@@ -2240,10 +2121,10 @@
           </FunctionImport>
           <FunctionImport Name="sp_eng_get_renew" />
           <FunctionImport Name="sp_eng_get_renew_by_service">
-            <Parameter Name="serviceId" Mode="In" Type="String" />
+          <Parameter Name="serviceId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_eng_get_renew_by_service_pending">
-            <Parameter Name="serviceId" Mode="In" Type="String" />
+          <Parameter Name="serviceId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_fb_ins_user">
             <Parameter Name="token" Mode="In" Type="String" />
@@ -2252,7 +2133,7 @@
             <Parameter Name="fb_status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_get_callback" ReturnType="Collection(String)">
-            <Parameter Name="id_charge" Mode="In" Type="Decimal" />
+          <Parameter Name="id_charge" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_get_claro_stats" ReturnType="Collection(smartgModel.sp_get_claro_stats_Result)">
             <Parameter Name="mes" Mode="In" Type="Decimal" />
@@ -2405,13 +2286,13 @@
           </FunctionImport>
           <FunctionImport Name="sp_renew_claro_dr_amigos" ReturnType="Collection(smartgModel.sp_renew_claro_dr_amigos_Result)" />
           <FunctionImport Name="sp_rpt_comcel" ReturnType="Collection(smartgModel.sp_rpt_comcel_Result)">
-            <Parameter Name="mes" Mode="In" Type="Decimal" />
+          <Parameter Name="mes" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_rpt_comcel_month" ReturnType="Collection(smartgModel.sp_rpt_comcel_month_Result)">
-            <Parameter Name="mes" Mode="In" Type="Decimal" />
+          <Parameter Name="mes" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_rpt_comcel2" ReturnType="Collection(smartgModel.sp_rpt_comcel2_Result)">
-            <Parameter Name="mes" Mode="In" Type="Decimal" />
+          <Parameter Name="mes" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_rpt_eng" ReturnType="Collection(smartgModel.sp_rpt_eng_Result)" />
           <FunctionImport Name="sp_rpt_eng_month" ReturnType="Collection(smartgModel.sp_rpt_eng_month_Result)" />
@@ -2425,10 +2306,10 @@
             <Parameter Name="y" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_rpt_peekaboo_rpt_month" ReturnType="Collection(smartgModel.sp_rpt_peekaboo_rpt_month_Result)">
-            <Parameter Name="y" Mode="In" Type="Int32" />
+          <Parameter Name="y" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_rpt_peekaboo_rpt_year" ReturnType="Collection(smartgModel.sp_rpt_peekaboo_rpt_year_Result)">
-            <Parameter Name="y" Mode="In" Type="Int32" />
+          <Parameter Name="y" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_rpt_sia" ReturnType="Collection(smartgModel.sp_rpt_sia_Result)" />
           <FunctionImport Name="sp_rpt_sia_month" ReturnType="Collection(smartgModel.sp_rpt_sia_month_Result)" />
@@ -2453,7 +2334,7 @@
             <Parameter Name="año" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_sia_status" ReturnType="Collection(smartgModel.sp_sia_status_Result)">
-            <Parameter Name="mes" Mode="In" Type="Decimal" />
+          <Parameter Name="mes" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_sms_ins_mo">
             <Parameter Name="id_sc" Mode="In" Type="Decimal" />
@@ -2488,7 +2369,7 @@
             <Parameter Name="id" Mode="InOut" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_sms_toSend">
-            <Parameter Name="id_sc" Mode="In" Type="Decimal" />
+          <Parameter Name="id_sc" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_spr_insMo">
             <Parameter Name="phone" Mode="In" Type="String" />
@@ -3417,76 +3298,6 @@
           <Property Name="url" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
           <Property Name="sid" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
-        <EntityType Name="tbl_spr_billing">
-          <Key>
-            <PropertyRef Name="id_billing" />
-          </Key>
-          <Property Name="id_billing" Type="Decimal" Nullable="false" Precision="18" Scale="0" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="url" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
-          <Property Name="port" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="tarif_class" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="content_type" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="app_id" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="typeb" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="tstamp" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="tbl_spr_buyChannel">
-          <Key>
-            <PropertyRef Name="id_channel" />
-          </Key>
-          <Property Name="id_channel" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="buy_channel" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="tstamp" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="tbl_spr_insMt">
-          <Key>
-            <PropertyRef Name="id_mt" />
-          </Key>
-          <Property Name="id_mt" Type="Decimal" Nullable="false" Precision="18" Scale="0" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="userp" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="pwd" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="appdid" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="enc" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
-          <Property Name="id_mtStatus" Type="Byte" />
-          <Property Name="tstamp" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="tbl_spr_mtStatus" Relationship="smartgModel.FK__tbl_spr_i__id_mt__4924D839" FromRole="tbl_spr_insMt" ToRole="tbl_spr_mtStatus" />
-        </EntityType>
-        <EntityType Name="tbl_spr_mo">
-          <Key>
-            <PropertyRef Name="id_mo" />
-          </Key>
-          <Property Name="id_mo" Type="Decimal" Nullable="false" Precision="18" Scale="0" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
-          <Property Name="shortNum" Type="Int32" />
-          <Property Name="msgText" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="msgId" Type="Decimal" Precision="15" Scale="0" />
-          <Property Name="userp" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="pwd" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="idOperator" Type="Int32" />
-          <Property Name="enc" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
-          <Property Name="refMsgId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="tstamp" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="tbl_spr_operator" Relationship="smartgModel.FK__tbl_spr_m__idOpe__3429BB53" FromRole="tbl_spr_mo" ToRole="tbl_spr_operator" />
-        </EntityType>
-        <EntityType Name="tbl_spr_mtStatus">
-          <Key>
-            <PropertyRef Name="id_mtStatus" />
-          </Key>
-          <Property Name="id_mtStatus" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="tstamp" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="tbl_spr_insMt" Relationship="smartgModel.FK__tbl_spr_i__id_mt__4924D839" FromRole="tbl_spr_mtStatus" ToRole="tbl_spr_insMt" />
-        </EntityType>
-        <EntityType Name="tbl_spr_operator">
-          <Key>
-            <PropertyRef Name="idOperator" />
-          </Key>
-          <Property Name="idOperator" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="tstamp" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="tbl_spr_mo" Relationship="smartgModel.FK__tbl_spr_m__idOpe__3429BB53" FromRole="tbl_spr_operator" ToRole="tbl_spr_mo" />
-        </EntityType>
         <EntityType Name="tbl_user">
           <Key>
             <PropertyRef Name="id_user" />
@@ -3670,30 +3481,6 @@
             </Principal>
             <Dependent Role="tbl_sms_sc_url">
               <PropertyRef Name="id_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_spr_i__id_mt__4924D839">
-          <End Role="tbl_spr_mtStatus" Type="smartgModel.tbl_spr_mtStatus" Multiplicity="0..1" />
-          <End Role="tbl_spr_insMt" Type="smartgModel.tbl_spr_insMt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_spr_mtStatus">
-              <PropertyRef Name="id_mtStatus" />
-            </Principal>
-            <Dependent Role="tbl_spr_insMt">
-              <PropertyRef Name="id_mtStatus" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_spr_m__idOpe__3429BB53">
-          <End Role="tbl_spr_operator" Type="smartgModel.tbl_spr_operator" Multiplicity="0..1" />
-          <End Role="tbl_spr_mo" Type="smartgModel.tbl_spr_mo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_spr_operator">
-              <PropertyRef Name="idOperator" />
-            </Principal>
-            <Dependent Role="tbl_spr_mo">
-              <PropertyRef Name="idOperator" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4733,78 +4520,6 @@
                 <ScalarProperty Name="substatus" ColumnName="substatus" />
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="sid" ColumnName="sid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_spr_billing">
-            <EntityTypeMapping TypeName="smartgModel.tbl_spr_billing">
-              <MappingFragment StoreEntitySet="tbl_spr_billing">
-                <ScalarProperty Name="id_billing" ColumnName="id_billing" />
-                <ScalarProperty Name="url" ColumnName="url" />
-                <ScalarProperty Name="port" ColumnName="port" />
-                <ScalarProperty Name="tarif_class" ColumnName="tarif_class" />
-                <ScalarProperty Name="content_type" ColumnName="content_type" />
-                <ScalarProperty Name="app_id" ColumnName="app_id" />
-                <ScalarProperty Name="typeb" ColumnName="typeb" />
-                <ScalarProperty Name="tstamp" ColumnName="tstamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_spr_buyChannel">
-            <EntityTypeMapping TypeName="smartgModel.tbl_spr_buyChannel">
-              <MappingFragment StoreEntitySet="tbl_spr_buyChannel">
-                <ScalarProperty Name="id_channel" ColumnName="id_channel" />
-                <ScalarProperty Name="buy_channel" ColumnName="buy_channel" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tstamp" ColumnName="tstamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_spr_insMt">
-            <EntityTypeMapping TypeName="smartgModel.tbl_spr_insMt">
-              <MappingFragment StoreEntitySet="tbl_spr_insMt">
-                <ScalarProperty Name="id_mt" ColumnName="id_mt" />
-                <ScalarProperty Name="userp" ColumnName="userp" />
-                <ScalarProperty Name="pwd" ColumnName="pwd" />
-                <ScalarProperty Name="appdid" ColumnName="appdid" />
-                <ScalarProperty Name="enc" ColumnName="enc" />
-                <ScalarProperty Name="id_mtStatus" ColumnName="id_mtStatus" />
-                <ScalarProperty Name="tstamp" ColumnName="tstamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_spr_mo">
-            <EntityTypeMapping TypeName="smartgModel.tbl_spr_mo">
-              <MappingFragment StoreEntitySet="tbl_spr_mo">
-                <ScalarProperty Name="id_mo" ColumnName="id_mo" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="shortNum" ColumnName="shortNum" />
-                <ScalarProperty Name="msgText" ColumnName="msgText" />
-                <ScalarProperty Name="msgId" ColumnName="msgId" />
-                <ScalarProperty Name="userp" ColumnName="userp" />
-                <ScalarProperty Name="pwd" ColumnName="pwd" />
-                <ScalarProperty Name="idOperator" ColumnName="idOperator" />
-                <ScalarProperty Name="enc" ColumnName="enc" />
-                <ScalarProperty Name="refMsgId" ColumnName="refMsgId" />
-                <ScalarProperty Name="tstamp" ColumnName="tstamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_spr_mtStatus">
-            <EntityTypeMapping TypeName="smartgModel.tbl_spr_mtStatus">
-              <MappingFragment StoreEntitySet="tbl_spr_mtStatus">
-                <ScalarProperty Name="id_mtStatus" ColumnName="id_mtStatus" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tstamp" ColumnName="tstamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_spr_operator">
-            <EntityTypeMapping TypeName="smartgModel.tbl_spr_operator">
-              <MappingFragment StoreEntitySet="tbl_spr_operator">
-                <ScalarProperty Name="idOperator" ColumnName="idOperator" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="tstamp" ColumnName="tstamp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -15,7 +15,8 @@ namespace EndeavorlinkStats.DAL
 
         public tbl_user getUser(string username)
         {
-            return (EndeavorlinkStats.DAL.tbl_user)(from users in context.tbl_user where users.name == username select users);
+            var user = (from users in context.tbl_user where users.name == username select users).First();
+            return user;
         }
 
         public int getID(string username)
