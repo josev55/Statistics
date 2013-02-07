@@ -15,7 +15,12 @@ namespace EndeavorlinkStats.DAL
 
         public tbl_user getUser(string username)
         {
-            var user = (from users in context.tbl_user where users.name == username select users).First();
+            var userList = (from users in context.tbl_user where users.name == username select users);
+            if (userList.Count() == 0)
+            {
+                throw new ArgumentException("Usuario/Contraseña incorrectos");
+            }
+            var user = userList.First();
             return user;
         }
 

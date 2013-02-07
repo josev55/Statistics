@@ -20,7 +20,7 @@ namespace EndeavorlinkStats.Controllers
 
         public ActionResult Index()
         {
-            if (HttpContext.Request.Cookies.Count != 0)
+            if (HttpContext.Session.)
             {
                 return RedirectToAction("Index", "Stats");
             }
@@ -30,19 +30,33 @@ namespace EndeavorlinkStats.Controllers
         [HttpPost]
         public String logIn(String user, String pass)
         {
-            var usuario = _usuarioService.getUser(user);
-
-            if (usuario.pwd.Equals(pass))
+            try
             {
-                HttpContext.Response.Cookies.Add(new HttpCookie(usuario.id_user.ToString(), usuario.name));
-                return JsonConvert.SerializeObject(new { Result = "OK", ID = usuario.id_user });
+                var usuario = _usuarioService.getUser(user);
+
+                if (usuario.pwd.Equals(pass))
+                {
+                    
+                    HttpContext.Session.Add(usuario.id_user.ToString(),usuario.name);
+                    
+                    return JsonConvert.SerializeObject(new { Result = "OK", ID = usuario.id_user });
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new { Result = "FAILED", ID = -1 });
+                }
             }
-            else
+            catch (ArgumentException)
             {
                 return JsonConvert.SerializeObject(new { Result = "FAILED", ID = -1 });
             }
         }
 
+        public ActionResult logout()
+        {
+            HttpContext.Session.Abandon();
+            return RedirectToAction("Index", "Login");
+        }
 
     }
 }

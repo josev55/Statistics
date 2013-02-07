@@ -15,21 +15,23 @@
         <script>
             function loginCompleted(response) {
                 var json = eval('(' + response + ')');
+                $("#loader").hide();
                 if (json.Result == "OK") {
-
+                    
                     window.location.replace('@Url.Action("Index", "Stats")');
                 }
                 else {
-                    $("#login-container").effect("bounce", { times: 3, direction: 'left' }, 300);
+                    $("#login-container").effect("bounce", { times: 3, direction: 'left',easing: 'easeInOutQuart' }, 300);
                     
                 }
             }
             $(document).ready(function () {
+                $("#loader").hide();
                 $("input[type=submit]")
                     .button()
                     .click(function (event) {
                         event.preventDefault();
-                        
+                        $("#loader").show(200);
                         $.post('@Url.Action("logIn","Login")', { user: $('#username').val(), pass: $('#password').val() },loginCompleted);
                     });
             });
@@ -50,7 +52,9 @@
                     <input type="submit" value="Log In"/>
                     <div class="clear"></div>
                 </form>
+                <img id="loader" src="~/Static/362.gif" width="26" style="margin-top: 10px;"/>
             </div>
+            
         </div>
         
     </div>

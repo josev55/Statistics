@@ -407,7 +407,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
-    <Content Include="Static\ajax-loader.gif" />
+    <Content Include="Static\362.gif" />
     <Content Include="Static\blackbg.PNG" />
     <Content Include="Static\bodyBg.png" />
     <Content Include="Static\dark-hive\images\animated-overlay.gif" />
