@@ -450,6 +450,7 @@
       FROM [dbo].[tbl_smt_sub] AS [tbl_smt_sub]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tbl_user" EntityType="smartgModel.Store.tbl_user" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_user_operator" EntityType="smartgModel.Store.tbl_user_operator" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbl_xendex_ua" EntityType="smartgModel.Store.tbl_xendex_ua" store:Type="Tables" store:Schema="dbo" store:Name="tbl_xendex_ua">
             <DefiningQuery>SELECT 
       [tbl_xendex_ua].[id_device] AS [id_device], 
@@ -1005,6 +1006,7 @@
           </Key>
           <Property Name="id_operator" Type="numeric" Nullable="false" />
           <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="id_pais" Type="numeric" />
         </EntityType>
         <EntityType Name="tbl_peru_ml_charge">
           <Key>
@@ -1517,6 +1519,14 @@
           <Property Name="pwd" Type="varchar" MaxLength="20" />
           <Property Name="description" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbl_user_operator">
+          <Key>
+            <PropertyRef Name="id_cli_op" />
+          </Key>
+          <Property Name="id_cli_op" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_user" Type="numeric" Nullable="false" />
+          <Property Name="id_operator" Type="numeric" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'smartg.dbo.tbl_xendex_ua' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
@@ -1740,6 +1750,9 @@
           <Parameter Name="msisdn" Type="numeric" Mode="In" />
           <Parameter Name="serviceCode" Type="numeric" Mode="In" />
           <Parameter Name="providerCode" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_get_user_operator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_user" Type="numeric" Mode="In" />
         </Function>
         <Function Name="sp_getClaroStatsMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mes" Type="int" Mode="In" />
@@ -2384,6 +2397,10 @@
             <Parameter Name="id" Mode="InOut" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="tbl_user_operator" EntityType="smartgModel.tbl_user_operator" />
+          <FunctionImport Name="sp_get_user_operator" ReturnType="Collection(smartgModel.sp_get_user_operator_Result)">
+            <Parameter Name="id_user" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="mg_senxxxual">
           <Key>
@@ -2829,6 +2846,7 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="tbl_sms_sc" Relationship="smartgModel.FK_tbl_sc_tbl_operator" FromRole="tbl_operator" ToRole="tbl_sms_sc" />
           <NavigationProperty Name="tbl_sms_sc1" Relationship="smartgModel.FK_tbl_sc_tbl_operator1" FromRole="tbl_operator" ToRole="tbl_sms_sc" />
+          <Property Type="Decimal" Name="id_pais" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="tbl_peru_ml_charge">
           <Key>
@@ -3723,6 +3741,19 @@
           <Property Type="Int32" Name="total" Nullable="true" />
           <Property Type="Int32" Name="n" Nullable="true" />
         </ComplexType>
+        <EntityType Name="tbl_user_operator">
+          <Key>
+            <PropertyRef Name="id_cli_op" />
+          </Key>
+          <Property Type="Decimal" Name="id_cli_op" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="id_user" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="id_operator" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+        <ComplexType Name="sp_get_user_operator_Result">
+          <Property Type="Decimal" Name="id_operator" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="id_pais" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4103,6 +4134,7 @@
           <EntitySetMapping Name="tbl_operator">
             <EntityTypeMapping TypeName="smartgModel.tbl_operator">
               <MappingFragment StoreEntitySet="tbl_operator">
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
                 <ScalarProperty Name="id_operator" ColumnName="id_operator" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
@@ -4911,6 +4943,24 @@
           <FunctionImportMapping FunctionImportName="sp_sms_toSend" FunctionName="smartgModel.Store.sp_sms_toSend" />
           <FunctionImportMapping FunctionImportName="sp_spr_insMo" FunctionName="smartgModel.Store.sp_spr_insMo" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="smartgModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="tbl_user_operator">
+            <EntityTypeMapping TypeName="smartgModel.tbl_user_operator">
+              <MappingFragment StoreEntitySet="tbl_user_operator">
+                <ScalarProperty Name="id_operator" ColumnName="id_operator" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_cli_op" ColumnName="id_cli_op" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_get_user_operator" FunctionName="smartgModel.Store.sp_get_user_operator">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="smartgModel.sp_get_user_operator_Result">
+                <ScalarProperty Name="id_operator" ColumnName="id_operator" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

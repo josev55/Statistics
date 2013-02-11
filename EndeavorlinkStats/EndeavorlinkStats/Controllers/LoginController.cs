@@ -12,15 +12,19 @@ namespace EndeavorlinkStats.Controllers
     {
         //
         // GET: /Login/
+        private Dictionary<String, String> loginName;
         private readonly IUsuarioService _usuarioService;
         public LoginController(IUsuarioService usuarioService)
         {
             _usuarioService = usuarioService;
+            loginName = new Dictionary<string, string>();
+            loginName.Add("atlas", "Atlas");
+            loginName.Add("vivazz", "Vivazz");
         }
 
         public ActionResult Index()
         {
-            if (HttpContext.Session.)
+            if (Session["username"] != null)
             {
                 return RedirectToAction("Index", "Stats");
             }
@@ -28,33 +32,33 @@ namespace EndeavorlinkStats.Controllers
         }
 
         [HttpPost]
-        public String logIn(String user, String pass)
+        public ActionResult logIn(String login, String password)
         {
             try
             {
-                var usuario = _usuarioService.getUser(user);
+                var usuario = _usuarioService.getUser(login);
 
-                if (usuario.pwd.Equals(pass))
+                if (usuario.pwd.Equals(password))
                 {
-                    
-                    HttpContext.Session.Add(usuario.id_user.ToString(),usuario.name);
-                    
-                    return JsonConvert.SerializeObject(new { Result = "OK", ID = usuario.id_user });
+                    String value = login;
+                    loginName.TryGetValue(login, out value);
+                    Session["username"] = value;
+                    return RedirectToAction("Index", "Stats");
                 }
                 else
                 {
-                    return JsonConvert.SerializeObject(new { Result = "FAILED", ID = -1 });
+                    return RedirectToAction("Index");
                 }
             }
             catch (ArgumentException)
             {
-                return JsonConvert.SerializeObject(new { Result = "FAILED", ID = -1 });
+                return RedirectToAction("Index");
             }
         }
 
-        public ActionResult logout()
+        public ActionResult logOut(String username)
         {
-            HttpContext.Session.Abandon();
+            Session.RemoveAll();
             return RedirectToAction("Index", "Login");
         }
 

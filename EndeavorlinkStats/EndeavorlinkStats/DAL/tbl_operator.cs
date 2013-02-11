@@ -22,6 +22,7 @@ namespace EndeavorlinkStats.DAL
     
         public decimal id_operator { get; set; }
         public string name { get; set; }
+        public Nullable<decimal> id_pais { get; set; }
     
         public virtual ICollection<tbl_sms_sc> tbl_sms_sc { get; set; }
         public virtual ICollection<tbl_sms_sc> tbl_sms_sc1 { get; set; }

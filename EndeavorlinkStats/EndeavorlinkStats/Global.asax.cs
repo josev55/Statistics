@@ -21,9 +21,5 @@ namespace EndeavorlinkStats
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             Bootstrapper.Initialise();
         }
-        protected void Application_End()
-        {
-            HttpContext.Current.Session.Abandon();
-        }
     }
 }

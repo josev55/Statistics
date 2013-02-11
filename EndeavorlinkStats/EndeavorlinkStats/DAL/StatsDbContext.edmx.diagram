@@ -79,6 +79,7 @@
         <AssociationConnector Association="smartgModel.FK_tbl_sms_mt_tbl_sc" ManuallyRouted="false" />
         <AssociationConnector Association="smartgModel.FK_tbl_sms_mt_tbl_user" ManuallyRouted="false" />
         <AssociationConnector Association="smartgModel.FK_tbl_sms_sc_url_tbl_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="smartgModel.tbl_user_operator" Width="1.5" PointX="4.30848608739138" PointY="10.734557216397747" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

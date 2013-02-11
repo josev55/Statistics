@@ -89,6 +89,7 @@ namespace EndeavorlinkStats.DAL
         public DbSet<tbl_smt_sub> tbl_smt_sub { get; set; }
         public DbSet<tbl_user> tbl_user { get; set; }
         public DbSet<tbl_xendex_ua> tbl_xendex_ua { get; set; }
+        public DbSet<tbl_user_operator> tbl_user_operator { get; set; }
     
         public virtual int sp_addextendedproc(string functname, string dllname)
         {
@@ -1052,6 +1053,15 @@ namespace EndeavorlinkStats.DAL
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<sp_get_user_operator_Result> sp_get_user_operator(Nullable<decimal> id_user)
+        {
+            var id_userParameter = id_user.HasValue ?
+                new ObjectParameter("id_user", id_user) :
+                new ObjectParameter("id_user", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_get_user_operator_Result>("sp_get_user_operator", id_userParameter);
         }
     }
 }

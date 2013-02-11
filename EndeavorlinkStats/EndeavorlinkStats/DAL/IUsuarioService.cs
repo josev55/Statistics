@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EndeavorlinkStats.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace EndeavorlinkStats.DAL
         List<tbl_user> getAll();
         tbl_user getUser(String username);
         int getID(String username);
+        InterfaceModel getOperatorModel(int id_user);
     }
 }
