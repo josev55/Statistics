@@ -22,6 +22,8 @@ namespace EndeavorlinkStats.Controllers
 
         public ActionResult Index()
         {
+            if (Session["username"] == null)
+                return RedirectToAction("Index", "Login");
             String user = Session["username"].ToString().ToLower();
             int id_user = _usuarioService.getID(user);
             iface = _usuarioService.getOperatorModel(id_user);
