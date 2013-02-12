@@ -31,10 +31,9 @@ namespace EndeavorlinkStats.DAL
             int ret = (int)(from users in context.tbl_user where users.name == username select users.id_user).First();
             return ret;
         }
-        public InterfaceModel getOperatorModel(int id_user)
+        public Dictionary<String,List<String>> getOperatorModel(int id_user)
         {
-            InterfaceModel model = new InterfaceModel();
-            model.operatorsForCountry = new Dictionary<string, List<string>>();
+            Dictionary<String, List<String>> operatorsForCountry = new Dictionary<string, List<string>>();
             var query = context.sp_get_user_operator(id_user).ToList();
             List<String> operatorsPeru = new List<string>();
             List<String> operatorsColombia = new List<string>();
@@ -70,15 +69,15 @@ namespace EndeavorlinkStats.DAL
             }
 
             if(operatorsPeru.Count != 0)
-                model.operatorsForCountry.Add("PERU", operatorsPeru);
+                operatorsForCountry.Add("PERU", operatorsPeru);
             if (operatorsColombia.Count != 0)
-                model.operatorsForCountry.Add("COLOMBIA", operatorsColombia);
+                operatorsForCountry.Add("COLOMBIA", operatorsColombia);
             if (operatorsDR.Count != 0)
-                model.operatorsForCountry.Add("DOMINICAN REPUBLIC", operatorsDR);
+                operatorsForCountry.Add("DOMINICAN REPUBLIC", operatorsDR);
             if (operatorsMexico.Count != 0)
-                model.operatorsForCountry.Add("MEXICO", operatorsMexico);
+                operatorsForCountry.Add("MEXICO", operatorsMexico);
 
-            return model;
+            return operatorsForCountry;
         }
 
     }

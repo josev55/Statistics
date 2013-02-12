@@ -1063,5 +1063,22 @@ namespace EndeavorlinkStats.DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_get_user_operator_Result>("sp_get_user_operator", id_userParameter);
         }
+    
+        public virtual ObjectResult<sp_stats_getMovistarMonthByUser_Result> sp_stats_getMovistarMonthByUser(Nullable<decimal> id_user, Nullable<decimal> selected_year, Nullable<decimal> selected_month)
+        {
+            var id_userParameter = id_user.HasValue ?
+                new ObjectParameter("id_user", id_user) :
+                new ObjectParameter("id_user", typeof(decimal));
+    
+            var selected_yearParameter = selected_year.HasValue ?
+                new ObjectParameter("selected_year", selected_year) :
+                new ObjectParameter("selected_year", typeof(decimal));
+    
+            var selected_monthParameter = selected_month.HasValue ?
+                new ObjectParameter("selected_month", selected_month) :
+                new ObjectParameter("selected_month", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_stats_getMovistarMonthByUser_Result>("sp_stats_getMovistarMonthByUser", id_userParameter, selected_yearParameter, selected_monthParameter);
+        }
     }
 }

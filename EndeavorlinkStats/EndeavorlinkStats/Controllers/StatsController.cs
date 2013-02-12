@@ -12,10 +12,14 @@ namespace EndeavorlinkStats.Controllers
     public class StatsController : Controller
     {
         private readonly IUsuarioService _usuarioService;
+        private readonly IStatsService _statService;
         private InterfaceModel iface;
-        public StatsController(IUsuarioService usuarioService)
+        public List<sp_stats_getMovistarMonthByUser_Result> movistarPeruStatsMonthly;
+        public StatsController(IUsuarioService usuarioService, IStatsService statsService)
         {
             _usuarioService = usuarioService;
+            _statService = statsService;
+            iface = new InterfaceModel();
         }
         //
         // GET: /Stats/
@@ -26,7 +30,8 @@ namespace EndeavorlinkStats.Controllers
                 return RedirectToAction("Index", "Login");
             String user = Session["username"].ToString().ToLower();
             int id_user = _usuarioService.getID(user);
-            iface = _usuarioService.getOperatorModel(id_user);
+            iface.operatorsForCountry = _usuarioService.getOperatorModel(id_user);
+            iface.movistarStatsMonthByUserId = _statService.getMovistarStatsByUserId(id_user, DateTime.Now.Month, DateTime.Now.Year);
             return View(iface);
         }
 

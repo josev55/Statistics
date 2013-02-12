@@ -20,6 +20,7 @@ namespace EndeavorlinkStats.Controllers
             loginName = new Dictionary<string, string>();
             loginName.Add("atlas", "Atlas");
             loginName.Add("vivazz", "Vivazz");
+            loginName.Add("cliq011cm", "Cliq");
         }
 
         public ActionResult Index()
@@ -42,7 +43,8 @@ namespace EndeavorlinkStats.Controllers
                 {
                     String value = login;
                     loginName.TryGetValue(login, out value);
-                    Session["username"] = value;
+                    Session["username"] = login;
+                    Session["displayName"] = value;
                     return RedirectToAction("Index", "Stats");
                 }
                 else

@@ -126,6 +126,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
+    <Compile Include="DAL\IStatsService.cs" />
     <Compile Include="DAL\IUsuarioService.cs" />
     <Compile Include="DAL\mg_senxxxual.cs">
       <DependentUpon>StatsDbContext.tt</DependentUpon>
@@ -205,6 +206,9 @@
     <Compile Include="DAL\sp_sia_status_Result.cs">
       <DependentUpon>StatsDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\sp_stats_getMovistarMonthByUser_Result.cs">
+      <DependentUpon>StatsDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\StatsDbContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -220,6 +224,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StatsDbContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\StatsService.cs" />
     <Compile Include="DAL\sysdiagrams.cs">
       <DependentUpon>StatsDbContext.tt</DependentUpon>
     </Compile>

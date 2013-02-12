@@ -1992,6 +1992,11 @@
           <Parameter Name="refMsgId" Type="varchar" Mode="In" />
           <Parameter Name="id" Type="numeric" Mode="InOut" />
         </Function>
+        <Function Name="sp_stats_getMovistarMonthByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_user" Type="numeric" Mode="In" />
+          <Parameter Name="selected_year" Type="numeric" Mode="In" />
+          <Parameter Name="selected_month" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -2399,7 +2404,12 @@
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="tbl_user_operator" EntityType="smartgModel.tbl_user_operator" />
           <FunctionImport Name="sp_get_user_operator" ReturnType="Collection(smartgModel.sp_get_user_operator_Result)">
+          <Parameter Name="id_user" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_stats_getMovistarMonthByUser" ReturnType="Collection(smartgModel.sp_stats_getMovistarMonthByUser_Result)">
             <Parameter Name="id_user" Mode="In" Type="Decimal" />
+            <Parameter Name="selected_year" Mode="In" Type="Decimal" />
+            <Parameter Name="selected_month" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="mg_senxxxual">
@@ -3754,6 +3764,11 @@
           <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="id_pais" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
+        <ComplexType Name="sp_stats_getMovistarMonthByUser_Result">
+          <Property Type="String" Name="subservice_code" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="successful" Nullable="true" />
+          <Property Type="Int32" Name="failed" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4958,6 +4973,15 @@
                 <ScalarProperty Name="id_operator" ColumnName="id_operator" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_stats_getMovistarMonthByUser" FunctionName="smartgModel.Store.sp_stats_getMovistarMonthByUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="smartgModel.sp_stats_getMovistarMonthByUser_Result">
+                <ScalarProperty Name="subservice_code" ColumnName="subservice_code" />
+                <ScalarProperty Name="successful" ColumnName="successful" />
+                <ScalarProperty Name="failed" ColumnName="failed" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

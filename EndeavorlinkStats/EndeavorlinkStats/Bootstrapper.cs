@@ -17,7 +17,9 @@ namespace EndeavorlinkStats
         private static IUnityContainer BuildUnityContainer()
         {
             var container = new UnityContainer();
+            //Registro las Interfaces con los servicios asociado.
             container.RegisterType<IUsuarioService, UsuarioService>();
+            container.RegisterType<IStatsService, StatsService>();
             // register all your components with the container here
             // it is NOT necessary to register your controllers
             

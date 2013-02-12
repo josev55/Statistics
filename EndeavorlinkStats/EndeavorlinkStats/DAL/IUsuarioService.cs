@@ -12,6 +12,6 @@ namespace EndeavorlinkStats.DAL
         List<tbl_user> getAll();
         tbl_user getUser(String username);
         int getID(String username);
-        InterfaceModel getOperatorModel(int id_user);
+        Dictionary<String,List<String>> getOperatorModel(int id_user);
     }
 }
