@@ -16,5 +16,13 @@ namespace EndeavorlinkStats.Controllers
             return View("404");
         }
 
+        public ActionResult err500()
+        {
+            return View("500");
+        }
+        public ActionResult err403()
+        {
+            return View("403");
+        }
     }
 }

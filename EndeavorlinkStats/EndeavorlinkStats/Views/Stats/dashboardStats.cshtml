@@ -1,0 +1,243 @@
+﻿@model EndeavorlinkStats.Models.InterfaceModel
+@{
+    if (Model.movistarStatsMonthByUserId.Count > 0)
+    {
+    <div class="wrapper">
+
+        <!-- Dynamic table -->
+        <div class="widget">
+            <div class="title">
+                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Movistar Perú</h6>
+                
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                <thead>
+                    <tr>
+                        <th>Subservice Code</th>
+                        <th>Subscriptions</th>
+                        <th>Renew</th>
+                        <th>Cancellation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+        foreach (var record in Model.movistarStatsMonthByUserId)
+        {
+                        <tr>
+                            <td>@record.subservice_code</td>
+                            <td>@record.successful</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>@record.successful</td>
+                        </tr>
+        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    }
+}
+@{
+    if (Model.claroStatsMonthByUserId.Count > 0)
+    {
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title">
+                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Claro Perú</h6>
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                <thead>
+                    <tr>
+                        <th>Subservice Code</th>
+                        <th>Subscriptions</th>
+                        <th>Renew</th>
+                        <th>Cancellation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+        foreach (var record in Model.claroStatsMonthByUserId)
+        {
+                        <tr>
+                            <td>@record.billingCode</td>
+                            <td>@record.success</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>@record.success</td>
+                        </tr>
+        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    }
+}
+
+@{
+    if (Model.comcelStatsMonthByUserId.Count > 0)
+    {
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title">
+                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Comcel Colombia</h6>
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                <thead>
+                    <tr>
+                        <th>Subservice Code</th>
+                        <th>Subscriptions</th>
+                        <th>Renew</th>
+                        <th>Cancellation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+        foreach (var record in Model.comcelStatsMonthByUserId)
+        {
+                        <tr>
+                            <td>@record.servicecode</td>
+                            <td>@record.subs</td>
+                            <td>@record.renews</td>
+                            <td>0</td>
+                            @{
+            var total = record.subs + record.renews;
+                            }
+                            <td>@total</td>
+                        </tr>
+        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    }
+}
+@{
+    if (Model.movistarStatsMonthAdmin.Count > 0)
+    {
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title">
+                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Movistar Perú</h6>
+                <img width="24" src="~/images/reload.png" style="margin-top:7px; margin-right:7px; float:right;"/>
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                <thead>
+                    <tr>
+                        <th>Subservice Code</th>
+                        <th>Subscriptions</th>
+                        <th>Renew</th>
+                        <th>Cancellation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+        foreach (var record in Model.movistarStatsMonthAdmin)
+        {
+                        <tr>
+                            <td>@record.subservice_code</td>
+                            <td>@record.successful</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>@record.successful</td>
+                        </tr>
+        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    }
+}
+@{
+    if (Model.claroStatsMonthAdmin.Count > 0)
+    {
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title">
+                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Claro Perú</h6>
+                <img width="24" src="~/images/reload.png" style="margin-top:7px; margin-right:7px; float:right;"/>
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                <thead>
+                    <tr>
+                        <th>Subservice Code</th>
+                        <th>Subscriptions</th>
+                        <th>Renew</th>
+                        <th>Cancellation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+        foreach (var record in Model.claroStatsMonthAdmin)
+        {
+                        <tr>
+                            <td>@record.description</td>
+                            <td>@record.success</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>@record.success</td>
+                        </tr>
+        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    }
+}
+@{
+    if (Model.comcelStatsMonthAdmin.Count > 0)
+    {
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title">
+                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Comcel Colombia</h6>
+                <img width="24" src="~/images/reload.png" style="margin-top:7px; margin-right:7px; float:right;"/>
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                <thead>
+                    <tr>
+                        <th>Subservice Code</th>
+                        <th>Subscriptions</th>
+                        <th>Renew</th>
+                        <th>Cancellation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+        foreach (var record in Model.comcelStatsMonthAdmin)
+        {
+                        <tr>
+                            <td>@record.servicecode</td>
+                            <td>@record.subs</td>
+                            <td>@record.renews</td>
+                            <td>0</td>
+                            @{
+            var total = record.subs + record.renews;
+                            }
+                            <td>@total</td>
+                        </tr>
+        }
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    }
+}

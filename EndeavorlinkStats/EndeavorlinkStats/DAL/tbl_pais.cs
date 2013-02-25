@@ -12,20 +12,16 @@ namespace EndeavorlinkStats.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_operator
+    public partial class tbl_pais
     {
-        public tbl_operator()
+        public tbl_pais()
         {
-            this.tbl_sms_sc = new HashSet<tbl_sms_sc>();
-            this.tbl_sms_sc1 = new HashSet<tbl_sms_sc>();
+            this.tbl_operator = new HashSet<tbl_operator>();
         }
     
-        public decimal id_operator { get; set; }
+        public decimal id_pais { get; set; }
         public string name { get; set; }
-        public Nullable<decimal> id_pais { get; set; }
     
-        public virtual tbl_pais tbl_pais { get; set; }
-        public virtual ICollection<tbl_sms_sc> tbl_sms_sc { get; set; }
-        public virtual ICollection<tbl_sms_sc> tbl_sms_sc1 { get; set; }
+        public virtual ICollection<tbl_operator> tbl_operator { get; set; }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model EndeavorlinkStats.Models.SMSModel
+<div class="wrapper">
+    <form action="" class="form">
+        <div class="widget">
+            <fieldset>
+                <div class="title">
+                    <img src="~/images/icons/dark/list.png" alt="" class="titleIcon" /><h6>Send SMS</h6>
+                </div>
+                <div class="formRow">
+                    <label>Shortcode: </label>
+                    <div class="formRight">
+                        <select name="select2" id="shortcode">
+                            @foreach (var record in Model.sms_sc)
+                            {
+                                <option value="@record.sc">@record.sc</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formRow">
+                    <label>MSISDN: </label>
+                    <div class="formRight">
+                        <input type="text" id="msisdn" value="" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formRow">
+                    <label>Message: </label>
+                    <div class="formRight">
+                        <textarea rows="8" cols="" id="msg" name="growingTextarea" class="autoGrow"></textarea></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formSubmit">
+                    <input type="button" id="getSMS" onclick="sendSMS()" value="submit" class="redB" /></div>
+            </fieldset>
+        </div>
+    </form>
+</div>
+<div>
+    <script type="text/javascript">
+        $("select, input:checkbox, input:radio, input:file").uniform();
+    </script>
+</div>

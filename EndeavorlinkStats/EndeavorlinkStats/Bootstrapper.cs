@@ -20,6 +20,7 @@ namespace EndeavorlinkStats
             //Registro las Interfaces con los servicios asociado.
             container.RegisterType<IUsuarioService, UsuarioService>();
             container.RegisterType<IStatsService, StatsService>();
+            container.RegisterType<ISupportService, SupportService>();
             // register all your components with the container here
             // it is NOT necessary to register your controllers
             

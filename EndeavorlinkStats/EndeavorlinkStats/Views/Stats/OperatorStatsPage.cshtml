@@ -1,0 +1,117 @@
+﻿@model EndeavorlinkStats.Models.OperatorStatsModel
+<div class="wrapper">
+    <div class="widget">
+        <ul class="tabs">
+            <li><a href="#anual">Anual Stats</a></li>
+            <li><a href="#month">Month Stats</a></li>
+            <li><a href="#day">Day Stats</a></li>
+        </ul>
+        <div class="tab_container">
+            <div id="anual" class="tab_content">
+                <div class="formRow" style="padding-left: 70%;">
+                    <label style="margin-right: 5px;">Year: </label>
+                    <div>
+                        <select name="select2" id="shortcode">
+                            @for (int i = 2012; i < 2014; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                @if (Model.claroAnual.Count > 0)
+                {
+                    foreach (var key in Model.claroAnual.Keys)
+                    {
+                    <div class="wrapper">
+                        <!-- Dynamic table -->
+                        <div class="widget">
+                            <div class="title">
+                                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Service Code @key</h6>
+
+                            </div>
+                            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Subscriptions</th>
+                                        <th>Renew</th>
+                                        <th>Cancellation</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var subitem in Model.claroAnual[key])
+                                    {
+                                        <tr>
+                                            <td>@subitem.mes</td>
+                                            <td>@subitem.subscription</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>@subitem.subscription</td>
+                                        </tr>   
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    }
+                }
+
+
+
+                @if (Model.movistarAnual.Count > 0)
+                {
+                    foreach (var key in Model.movistarAnual.Keys)
+                    {
+                    <div class="wrapper">
+                        <!-- Dynamic table -->
+                        <div class="widget">
+                            <div class="title">
+                                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Service Code @key</h6>
+
+                            </div>
+                            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Subscriptions</th>
+                                        <th>Renew</th>
+                                        <th>Cancellation</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var subitem in Model.movistarAnual[key])
+                                    {
+                                        <tr>
+                                            <td>@subitem.mes</td>
+                                            <td>@subitem.subscription</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>@subitem.subscription</td>
+                                        </tr>   
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    }
+                }
+
+
+
+            </div>
+            <div id="month" class="tab_content">
+            </div>
+            <div id="day" class="tab_content">
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("select, input:checkbox, input:radio, input:file").uniform();
+</script>

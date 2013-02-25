@@ -1,0 +1,67 @@
+﻿@model EndeavorlinkStats.Models.SMSModel
+<div class="widget">
+    <div class="title">
+        <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>SMS MO</h6>
+    </div>
+    <table cellpadding="0" cellspacing="0" border="0" class="display dTable">
+        <thead>
+            <tr>
+                <th>Msisdn</th>
+                <th>Shortcode</th>
+                <th>Message</th>
+                <th>Sms State</th>
+                <th>Create Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.sms_mo)
+            {
+                <tr>
+                    <td>@record.msisdn</td>
+                    <td>@record.sc</td>
+                    <td>@record.msg</td>
+                    <td>@record.smsstate</td>
+                    <td>@record.create_date</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="widget">
+    <div class="title">
+        <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>SMS MT</h6>
+    </div>
+    <table cellpadding="0" cellspacing="0" border="0" class="display dTable">
+        <thead>
+            <tr>
+                <th>Msisdn</th>
+                <th>Shortcode</th>
+                <th>Message</th>
+                <th>Sms State</th>
+                <th>Create Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.sms_mt)
+            {
+                <tr>
+                    <td>@record.msisdn</td>
+                    <td>@record.sc</td>
+                    <td>@record.msg</td>
+                    <td>@record.smsstate</td>
+                    <td>@record.create_date</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="footer">
+    <script type="text/javascript">
+        $('.dTable').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers",
+            "sDom": '<""l>t<"F"fp>'
+        });
+    </script>
+</div>

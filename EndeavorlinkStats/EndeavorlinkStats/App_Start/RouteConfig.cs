@@ -18,6 +18,10 @@ namespace EndeavorlinkStats
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "GetStatsPage",
+                url: "{controller}/{action}/{year}/{oper}",
+                defaults: new { controller = "stats", action = "getOperatorStatPage", year = UrlParameter.Optional });
         }
     }
 }

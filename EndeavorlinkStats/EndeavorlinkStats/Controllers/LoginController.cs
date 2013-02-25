@@ -21,13 +21,15 @@ namespace EndeavorlinkStats.Controllers
             loginName.Add("atlas", "Atlas");
             loginName.Add("vivazz", "Vivazz");
             loginName.Add("cliq011cm", "Cliq");
+            loginName.Add("admin", "Admin");
+            loginName.Add("support", "Support");
         }
 
         public ActionResult Index()
         {
             if (Session["username"] != null)
             {
-                return RedirectToAction("Index", "Stats");
+                return RedirectToAction("index", "stats");
             }
             return View();
         }
@@ -45,7 +47,7 @@ namespace EndeavorlinkStats.Controllers
                     loginName.TryGetValue(login, out value);
                     Session["username"] = login;
                     Session["displayName"] = value;
-                    return RedirectToAction("Index", "Stats");
+                    return RedirectToAction("index", "stats");
                 }
                 else
                 {

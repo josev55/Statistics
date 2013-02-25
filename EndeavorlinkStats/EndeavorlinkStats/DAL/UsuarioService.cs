@@ -8,7 +8,7 @@ namespace EndeavorlinkStats.DAL
 {
     public class UsuarioService : IUsuarioService
     {
-        private smartg context = new smartg();
+        private StatsContextContainer context = new StatsContextContainer();
         public List<tbl_user> getAll()
         {
             return (from users in context.tbl_user select users).ToList<tbl_user>();
