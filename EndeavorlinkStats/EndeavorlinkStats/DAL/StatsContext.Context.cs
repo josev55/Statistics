@@ -388,5 +388,27 @@ namespace EndeavorlinkStats.DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_get_claro_anual_Result>("sp_get_claro_anual", anioParameter, id_userParameter);
         }
+    
+        public virtual ObjectResult<sp_get_comcel_anual_Result> sp_get_comcel_anual(Nullable<decimal> anio, Nullable<decimal> id_user)
+        {
+            var anioParameter = anio.HasValue ?
+                new ObjectParameter("anio", anio) :
+                new ObjectParameter("anio", typeof(decimal));
+    
+            var id_userParameter = id_user.HasValue ?
+                new ObjectParameter("id_user", id_user) :
+                new ObjectParameter("id_user", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_get_comcel_anual_Result>("sp_get_comcel_anual", anioParameter, id_userParameter);
+        }
+    
+        public virtual ObjectResult<sp_get_mt_support_Result> sp_get_mt_support_log(string msisdn)
+        {
+            var msisdnParameter = msisdn != null ?
+                new ObjectParameter("msisdn", msisdn) :
+                new ObjectParameter("msisdn", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_get_mt_support_Result>("sp_get_mt_support_log", msisdnParameter);
+        }
     }
 }

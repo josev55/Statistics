@@ -19,6 +19,10 @@ namespace EndeavorlinkStats.DAL
 
         public List<sp_get_mt_support_Result> getMTbyMSISDN(string msisdn)
         {
+            if (msisdn.ToString().Substring(0, 2) == "57")
+            {
+                return _repository.sp_get_mt_support_log(msisdn).ToList<sp_get_mt_support_Result>();
+            }
             return _repository.sp_get_mt_support(msisdn).ToList();
         }
 

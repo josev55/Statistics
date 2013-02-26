@@ -270,9 +270,10 @@
                 }
             });
         }
-        function getOperatorStatsPage(year,oper) {
+        function getOperatorStatsPage(month, year, oper) {
+            this.oper = oper;
             $.ajax({
-                url: '@Url.Action("getOperatorStatPage","stats")/' + year +'/'+ oper,
+                url: '@Url.Action("getOperatorStatPage","stats")/'+ month + '/' + year +'/'+ oper,
                 type: 'get',
                 beforeSend: function () {
                     $('#contenido').html("<img src='/images/spinner.gif' style='margin: 100 450;'/>").delay(2000);
@@ -296,10 +297,20 @@
 
                     };
                     $("div[class^='widget']").contentTabs(); //Run function on any div with class name of "Content Tabs"
+                    $("select, input:checkbox, input:radio, input:file").uniform();
                 }
             });
             
         }
+
+        function getOperatorStatsAnual() {
+            getOperatorStatsPage('@DateTime.Now.Month',$("#year").val(), oper);
+        }
+
+        function getOperatorStatsMes() {
+        }
+
+        
     </script>
 
 </head>
@@ -364,7 +375,7 @@
                         {
                             friendlyName = "CLARO";
                         }
-                            <li><a href="#" onclick="getOperatorStatsPage(@DateTime.Now.Year,'@friendlyName.ToLower()')">@friendlyName</a></li>   
+                            <li><a href="#" onclick="getOperatorStatsPage(@DateTime.Now.Month,@DateTime.Now.Year,'@friendlyName.ToLower()')">@friendlyName</a></li>   
                     }
                         }
                     </ul>

@@ -60,5 +60,11 @@ namespace EndeavorlinkStats.DAL
         {
             return _repository.sp_get_claro_anual(year, id_user).ToList();
         }
+
+
+        public List<sp_get_comcel_anual_Result> getComcelStatsAnual(int id_user, int year)
+        {
+            return _repository.sp_get_comcel_anual(year, id_user).ToList();
+        }
     }
 }

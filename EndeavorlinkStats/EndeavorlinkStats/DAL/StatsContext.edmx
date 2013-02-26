@@ -1783,6 +1783,10 @@
           <Parameter Name="mes" Type="numeric" Mode="In" />
           <Parameter Name="anho" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="sp_get_comcel_anual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="anio" Type="numeric" Mode="In" />
+          <Parameter Name="id_user" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="sp_get_mo_support" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="msisdn" Type="varchar" Mode="In" />
         </Function>
@@ -1791,6 +1795,9 @@
           <Parameter Name="id_user" Type="numeric" Mode="In" />
         </Function>
         <Function Name="sp_get_mt_support" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="msisdn" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_get_mt_support_log" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="msisdn" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_get_user_operator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2080,6 +2087,13 @@
           <FunctionImport Name="sp_get_claro_anual" ReturnType="Collection(StatsContext.sp_get_claro_anual_Result)">
             <Parameter Name="anio" Mode="In" Type="Decimal" />
             <Parameter Name="id_user" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_get_comcel_anual" ReturnType="Collection(StatsContext.sp_get_comcel_anual_Result)">
+            <Parameter Name="anio" Mode="In" Type="Decimal" />
+            <Parameter Name="id_user" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_get_mt_support_log" ReturnType="Collection(StatsContext.sp_get_mt_support_Result)">
+            <Parameter Name="msisdn" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="mg_senxxxual">
@@ -3327,6 +3341,19 @@
           <Property Type="Int32" Name="subscription" Nullable="true" />
           <Property Type="Int32" Name="mes" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="sp_get_comcel_anual_Result">
+          <Property Type="Decimal" Name="servicecode" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="mes" Nullable="true" />
+          <Property Type="Int32" Name="subs" Nullable="true" />
+          <Property Type="Int32" Name="renews" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_get_mt_support_log_Result">
+          <Property Type="Decimal" Name="msisdn" Nullable="false" Precision="14" Scale="0" />
+          <Property Type="String" Name="sc" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="msg" Nullable="false" MaxLength="320" />
+          <Property Type="Byte" Name="smsstate" Nullable="false" />
+          <Property Type="DateTime" Name="create_date" Nullable="true" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4337,6 +4364,27 @@
                 <ScalarProperty Name="billingCode" ColumnName="billingCode" />
                 <ScalarProperty Name="subscription" ColumnName="subscription" />
                 <ScalarProperty Name="mes" ColumnName="mes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_get_comcel_anual" FunctionName="Store.sp_get_comcel_anual">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StatsContext.sp_get_comcel_anual_Result">
+                <ScalarProperty Name="servicecode" ColumnName="servicecode" />
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="subs" ColumnName="subs" />
+                <ScalarProperty Name="renews" ColumnName="renews" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_get_mt_support_log" FunctionName="Store.sp_get_mt_support_log">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="StatsContext.sp_get_mt_support_Result">
+                <ScalarProperty Name="msisdn" ColumnName="msisdn" />
+                <ScalarProperty Name="sc" ColumnName="sc" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="smsstate" ColumnName="smsstate" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

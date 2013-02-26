@@ -16,6 +16,7 @@ namespace EndeavorlinkStats.DAL
         List<sp_stats_getComcelAdmin_Result> getComcelStatsAdmin(int month,int year);
         List<sp_get_movistar_anual_Result> getMovistarStatsAnual(int id_user, int year);
         List<sp_get_claro_anual_Result> getClaroStatsAnual(int id_user, int year);
+        List<sp_get_comcel_anual_Result> getComcelStatsAnual(int id_user, int year);
         int get_id_operator(String oper);
     }
 }

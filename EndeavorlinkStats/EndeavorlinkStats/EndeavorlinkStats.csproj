@@ -147,10 +147,16 @@
     <Compile Include="DAL\sp_get_claro_stats_Result.cs">
       <DependentUpon>StatsContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\sp_get_comcel_anual_Result.cs">
+      <DependentUpon>StatsContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\sp_get_movistar_anual_Result.cs">
       <DependentUpon>StatsContext.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\sp_get_mo_support_Result.cs">
+      <DependentUpon>StatsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_get_mt_support_log_Result.cs">
       <DependentUpon>StatsContext.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\sp_get_mt_support_Result.cs">

@@ -6,20 +6,28 @@
             <li><a href="#month">Month Stats</a></li>
             <li><a href="#day">Day Stats</a></li>
         </ul>
-        <div class="tab_container">
+        <div class="tab_container" style="padding-bottom: 10px;">
             <div id="anual" class="tab_content">
-                <div class="formRow" style="padding-left: 70%;">
+                <div class="formRow" style="float: right; border-bottom: none; width: 250px;">
                     <label style="margin-right: 5px;">Year: </label>
                     <div>
-                        <select name="select2" id="shortcode">
+                        <select id="year" onchange="getOperatorStatsAnual()">
                             @for (int i = 2012; i < 2014; i++)
                             {
+                                if (int.Parse(Model.year) == i)
+                                {
+                                <option value="@i" selected="selected">@i</option>
+                                }
+                                else
+                                {
                                 <option value="@i">@i</option>
+                                }
                             }
                         </select>
                     </div>
-                    <div class="clear"></div>
+                    
                 </div>
+                <div class="clear"></div>
 
                 @if (Model.claroAnual.Count > 0)
                 {
@@ -102,9 +110,87 @@
                 }
 
 
+                
+                @if (Model.comcelAnual.Count > 0)
+                {
+                    foreach (var key in Model.comcelAnual.Keys)
+                    {
+                    <div class="wrapper">
+                        <!-- Dynamic table -->
+                        <div class="widget">
+                            <div class="title">
+                                <img src="~/images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Service Code @key</h6>
 
+                            </div>
+                            <table cellpadding="0" cellspacing="0" border="0" class="display sTable">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Subscriptions</th>
+                                        <th>Renew</th>
+                                        <th>Cancellation</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var subitem in Model.comcelAnual[key])
+                                    {
+                                        <tr>
+                                            <td>@subitem.mes</td>
+                                            <td>@subitem.subs</td>
+                                            <td>@subitem.renews</td>
+                                            <td>0</td>
+                                            @{var total = subitem.subs + subitem.renews;}
+                                            <td>@total</td>
+                                        </tr>   
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    }
+                }
             </div>
+
+
+
+
             <div id="month" class="tab_content">
+                <div class="formRow" style="float: right; border-bottom: none; width: 250px;">
+                    <label style="margin-right: 5px;">Year: </label>
+                    <div>
+                        <select id="mes" onchange="getOperatorStatsMes()">
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                if (int.Parse(Model.month) == i)
+                                {
+                                <option value="@i" selected="selected">@i</option>
+                                }
+                                else
+                                {
+                                <option value="@i">@i</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <label style="margin-right: 5px;">Year: </label>
+                    <div>
+                        <select id="year2" onchange="getOperatorStatsMes()">
+                            @for (int i = 2012; i < 2014; i++)
+                            {
+                                if (int.Parse(Model.year) == i)
+                                {
+                                <option value="@i" selected="selected">@i</option>
+                                }
+                                else
+                                {
+                                <option value="@i">@i</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="clear"></div>
+                </div>
             </div>
             <div id="day" class="tab_content">
             </div>
@@ -112,6 +198,4 @@
         <div class="clear"></div>
     </div>
 </div>
-<script type="text/javascript">
-    $("select, input:checkbox, input:radio, input:file").uniform();
-</script>
+

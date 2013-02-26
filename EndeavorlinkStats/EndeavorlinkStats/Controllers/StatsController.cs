@@ -17,6 +17,7 @@ namespace EndeavorlinkStats.Controllers
         private OperatorStatsModel ostats;
         private Dictionary<int, List<sp_get_movistar_anual_Result>> recordsMovistar;
         private Dictionary<int, List<sp_get_claro_anual_Result>> recordsClaro;
+        private Dictionary<int, List<sp_get_comcel_anual_Result>> recordsComcel;
 
         public StatsController(IUsuarioService usuarioService, IStatsService statsService)
         {
@@ -26,6 +27,7 @@ namespace EndeavorlinkStats.Controllers
             ostats = new OperatorStatsModel();
             recordsMovistar = new Dictionary<int, List<sp_get_movistar_anual_Result>>();
             recordsClaro = new Dictionary<int, List<sp_get_claro_anual_Result>>();
+            recordsComcel = new Dictionary<int, List<sp_get_comcel_anual_Result>>();
         }
         //
         // GET: /Stats/
@@ -90,16 +92,23 @@ namespace EndeavorlinkStats.Controllers
 
         public PartialViewResult getOperatorStatPage(String oper, String month, String year)
         {
+            ostats.year = year;
 
             if (oper == "movistar")
             {
                 sortMovistarList(_statService.getMovistarStatsAnual(_usuarioService.getID(Session["username"].ToString()), int.Parse(year)));
+                
                 ostats.movistarAnual = recordsMovistar;
             }
             if (oper == "claro")
             {
                 sortClaroList(_statService.getClaroStatsAnual(_usuarioService.getID(Session["username"].ToString()),int.Parse(year)));
                 ostats.claroAnual = recordsClaro;
+            }
+            if (oper == "comcel")
+            {
+                sortComcelList(_statService.getComcelStatsAnual(_usuarioService.getID(Session["username"].ToString()), int.Parse(year)));
+                ostats.comcelAnual = recordsComcel;
             }
             return PartialView("OperatorStatsPage", ostats);
         }
@@ -143,6 +152,18 @@ namespace EndeavorlinkStats.Controllers
                 if (!recordsClaro.ContainsKey(int.Parse(item)))
                 {
                     recordsClaro.Add(int.Parse(item), stats.FindAll(x => x.billingCode == item));
+                }
+            }
+        }
+
+        private void sortComcelList(List<sp_get_comcel_anual_Result> stats)
+        {
+            List<decimal> serviceCodeDistinct = stats.Distinct().Select(x => x.servicecode).ToList();
+            foreach (var item in serviceCodeDistinct)
+            {
+                if (!recordsComcel.ContainsKey((int)item))
+                {
+                    recordsComcel.Add((int)item, stats.FindAll(x => x.servicecode == item));
                 }
             }
         }

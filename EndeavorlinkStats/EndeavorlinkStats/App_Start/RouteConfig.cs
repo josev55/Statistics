@@ -20,8 +20,8 @@ namespace EndeavorlinkStats
             );
             routes.MapRoute(
                 name: "GetStatsPage",
-                url: "{controller}/{action}/{year}/{oper}",
-                defaults: new { controller = "stats", action = "getOperatorStatPage", year = UrlParameter.Optional });
+                url: "{controller}/{action}/{month}/{year}/{oper}",
+                defaults: new { controller = "stats", action = "getOperatorStatPage", month = UrlParameter.Optional, year = UrlParameter.Optional });
         }
     }
 }
